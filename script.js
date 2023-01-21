@@ -105,11 +105,20 @@ addEventListener("resize", () => (screenSize = getScreenSize()));
 addEventListener("click", toggleActive);
 addEventListener("mousemove", (e) => {
   if (!isActive) return;
-  updateColors(e);
+
+  //throttle the updates, no need to update faster than the frame rate
+  if (!isUpdating) {
+    requestAnimationFrame(() => {
+      updateColors(e);
+      isUpdating = false;
+    });
+  }
+  isUpdating = true;
 });
 
 //  init
 let screenSize = getScreenSize();
 let isActive;
+let isUpdating = false;
 setIsActive(true);
 updateColors();
