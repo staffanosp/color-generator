@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Shrikhand&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+
+  /* --color01: hsl(360, 100%, 50%);
+  --color02: hsl(360, 100%, 50%);
+  --color03: hsl(360, 100%, 50%);
+  --color04: hsl(360, 100%, 50%);
+  --color05: hsl(360, 100%, 50%); */
+
+  --blackish: #222;
+  --whiteish: #ccc;
+}
+
+:root.active {
+  cursor: crosshair;
+}
+
+:root:not(.active) .wrapper {
+  border: var(--blackish) solid 32px;
+}
+
+:root:not(.active) .color-inspect-container {
+  right: 48px;
+  bottom: 48px;
+}
+
+.wrapper {
+  border: var(--blackish) solid 0px;
+  padding: 4rem;
+
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: border 200ms ease;
+}
+
+.content {
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  user-select: none;
+}
+
+.content--big {
+  font-size: 10rem;
+}
+
+.color-inspect-container {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--blackish);
+  border-radius: 8px;
+  transition: all 200ms ease;
+}
+
+.color-inspect-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.color-inspect-swatch {
+  width: 16px;
+  height: 16px;
+  border: var(--whiteish) solid 1px;
+  border-radius: 4px;
+}
+
+.color-inspect-label {
+  font-family: "Fira Code", monospace;
+  text-transform: uppercase;
+  color: var(--whiteish);
+}
+
+.background-color01 {
+  background-color: var(--color01);
+}
+.background-color02 {
+  background-color: var(--color02);
+}
+.background-color03 {
+  background-color: var(--color03);
+}
+.background-color04 {
+  background-color: var(--color04);
+}
+.background-color05 {
+  background-color: var(--color05);
+}
+
+.color01 {
+  color: var(--color01);
+}
+.color02 {
+  color: var(--color02);
+}
+.color03 {
+  color: var(--color03);
+}
+.color04 {
+  color: var(--color04);
+}
+.color05 {
+  color: var(--color05);
+}
