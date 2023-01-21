@@ -1,5 +1,6 @@
 import { lerp, colorToCssHsl, colorToHex } from "./utils.js";
 
+//  elements
 const rootEl = document.documentElement;
 const textColor02El = document.getElementById("textColor02");
 const textColor03El = document.getElementById("textColor03");
@@ -21,6 +22,7 @@ const colorInspectColor05LabelEl = document.getElementById(
   "colorInspectColor05Label"
 );
 
+//  functions
 const getScreenSize = () => ({ w: window.innerWidth, h: window.innerHeight });
 
 const updateColors = (e) => {
@@ -31,6 +33,7 @@ const updateColors = (e) => {
     y: hasEvent ? e.clientY / screenSize.h : 0.5,
   };
 
+  //  generate colors
   const colors = {
     color01: {
       hue: lerp(mousePosRatio.x, 0, 360),
@@ -63,6 +66,7 @@ const updateColors = (e) => {
     },
   };
 
+  //  update DOM
   rootEl.style.setProperty("--color01", colorToCssHsl(colors.color01));
   rootEl.style.setProperty("--color02", colorToCssHsl(colors.color02));
   rootEl.style.setProperty("--color03", colorToCssHsl(colors.color03));
@@ -96,14 +100,16 @@ const toggleActive = (e) => {
   if (isActive) updateColors(e);
 };
 
-let screenSize = getScreenSize();
-let isActive;
-setIsActive(true);
-updateColors();
-
+//  event listeners
 addEventListener("resize", () => (screenSize = getScreenSize()));
 addEventListener("click", toggleActive);
 addEventListener("mousemove", (e) => {
   if (!isActive) return;
   updateColors(e);
 });
+
+//  init
+let screenSize = getScreenSize();
+let isActive;
+setIsActive(true);
+updateColors();

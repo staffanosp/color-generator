@@ -37,16 +37,17 @@ const HSLToHex = (h, s, l) => {
     b = x;
   }
   // Having obtained RGB, convert channels to hex
-  r = Math.round((r + m) * 255).toString(16);
-  g = Math.round((g + m) * 255).toString(16);
-  b = Math.round((b + m) * 255).toString(16);
+  r = Math.round((r + m) * 255)
+    .toString(16)
+    .padStart(2, "0");
+  g = Math.round((g + m) * 255)
+    .toString(16)
+    .padStart(2, "0");
+  b = Math.round((b + m) * 255)
+    .toString(16)
+    .padStart(2, "0");
 
-  // Prepend 0s, if necessary
-  if (r.length == 1) r = "0" + r;
-  if (g.length == 1) g = "0" + g;
-  if (b.length == 1) b = "0" + b;
-
-  return "#" + r + g + b;
+  return `#${r}${g}${b}`;
 };
 
 const colorToCssHsl = ({ hue, saturation, lightness }) =>
